@@ -45,11 +45,15 @@ def test(file, size, unit):
     print("Read %d %s in %.2f ms." % (size, unit.upper(), rt))
     print("Average reading speed: %.2f Bytes / ms" % (avg_rs))
 
+    print('----------------End Of Test-----------------')
+
     os.remove(file)
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print('Usage error, pls try again.') # parameters check, not that comprehensive
+    if len(sys.argv) != 3 or sys.argv[2].lower() not in ['b', 'kb', 'mb', 'gb']: # parameters check
+        print('Usage error, pls try again.')
+        print('Usage: python [file_name].py [size] [unit]')
+        print('Example: python storage_test.py 10 kb')
     else:
         size = int(sys.argv[1])
         unit = sys.argv[2]
