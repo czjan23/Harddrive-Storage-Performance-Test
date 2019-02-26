@@ -2,14 +2,14 @@ import os
 import sys
 from time import time
 
-FILE = 'rwtest'
+FILE = 'rwtest' # temp file, for write & read
 
 def write_test(file, size_bytes):
     f = os.open(file, os.O_CREAT | os.O_WRONLY)
-    data = os.urandom(size_bytes)
+    data = os.urandom(size_bytes) # create random data with size_bytes in bytes
     start_time = time() * 1000
     os.write(f, data)
-    os.fsync(f)
+    os.fsync(f) # force os write to disk
     end_time = time() * 1000
     os.close(f)
     return end_time - start_time
