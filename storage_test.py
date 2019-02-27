@@ -114,11 +114,11 @@ if __name__ == "__main__":
         # print('Usage: python [file_name].py [size] [unit]')
         # print('Example: python storage_test.py 10 kb')
         print('Running default tests:')
-        size_list = [1, 128, 256, 512, 1024, 1, 128, 256, 512, 1024, 2]
+        size_list = [1, 128, 256, 512, 1024, 2, 128, 256, 512, 1024, 2]
         unit_list = ['kb', 'kb', 'kb', 'kb', 'kb', 'mb', 'mb', 'mb', 'mb', 'mb', 'gb']
         ws_result_list = list()
         rs_result_list = list()
-        for i in range(10):
+        for i in range(11):
             print('Processing:' + str(size_list[i]) + str(unit_list[i]))
             test_result = test(FILE, size_list[i], unit_list[i])
             ws_result_list.append(test_result[0])
