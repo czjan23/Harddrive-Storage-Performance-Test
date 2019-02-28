@@ -110,9 +110,6 @@ if __name__ == "__main__":
     """
 
     if len(sys.argv) != 3 or sys.argv[2].lower() not in ['b', 'kb', 'mb', 'gb']: # parameters check
-        # print('Usage error, pls try again.')
-        # print('Usage: python [file_name].py [size] [unit]')
-        # print('Example: python storage_test.py 10 kb')
         print('Running default tests:')
         size_list = [1, 128, 256, 512, 1024, 2, 128, 256, 512, 1024, 2]
         unit_list = ['kb', 'kb', 'kb', 'kb', 'kb', 'mb', 'mb', 'mb', 'mb', 'mb', 'gb']
@@ -123,6 +120,9 @@ if __name__ == "__main__":
             test_result = test(FILE, size_list[i], unit_list[i])
             ws_result_list.append(test_result[0])
             rs_result_list.append(test_result[1])
+        
+        print(ws_result_list)
+        print(rs_result_list)
         
         avg_ws_default = sum(ws_result_list) / float(len(ws_result_list))
         avg_rs_default = sum(rs_result_list) / float(len(rs_result_list))
