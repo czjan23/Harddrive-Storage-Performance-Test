@@ -2,11 +2,11 @@
 This repository is created for CSCE 678 Midterm Project. In this project, we focus on testing the writing & reading performance of 3 different cloud platforms - Microsoft Azure, AWS (EC2), Google Cloud Platform. 
 
 ## How to Run the Code
-** Note: This program is developed with Python 3 and in Linux environment.**
+** Note: This program is developed with Python 3 in Linux environment.**
 
-We accepts 3 ways of running the test code:
+We accept 3 ways of running the test code:
 
-First, you can simply run the default test by using the following command:
+<b>First</b>, you can simply run the default test by using the following command:
 
 ```
 python storage_test.py`
@@ -14,16 +14,18 @@ python storage_test.py`
 
 The program will run default test to write and read different file sizes. Each test result of writing speed and reading speed will be printed and the average speed will be shown as well in the final part.
 
-Second, you can run the code with self-defined file sizes by following the following format:
+<b>Second</b>, you can run the code with self-defined file sizes by following the following format:
 
 ```
 python storage_test.py [file_size_number] [file_size_unit]
 Example:
 python storage_test.py 10 kb
 ```
-This will trigger the test running with your specified file size. Both this method and the first method will only test once for each file size.
+This will trigger the test running with your specified file size. Both this method and the first method will only test once for each file size. 
 
-Third, you can run a file size for several iterations as many as you specified in the third argument:
+<i>(Note: In our test, due to memory limitiatons, we have found AWS cannot handle write/read a file size of 1GB and Google Cloud Platform cannot deal with 2GB. Therefore, testing with larger files on these two platforms will lead to MemoryError or process being killed.)</i>
+
+<b>Third</b>, you can run a file size for several iterations as many as you specified in the third argument:
 
 ```
 python storage_test.py [file_size_number] [file_size_unit] [iteration_times]
@@ -33,6 +35,7 @@ python storage_test.py 10 kb 20
 The above command will run the test for writing and reading a 10KB file 20 times. After the test finishes, mean, standard deviation, confident interval will be output for statistical use. 
 
 ## Implementation Method
+In progress.
 
 ## Test Result
 
@@ -76,3 +79,7 @@ In this part, each test was run 20 times to collect two lists of writing speeds 
 | 128MB         | 18565.70 | 1373328.15 | 18565.70 +- 24.70   | 1373328.15 +- 45172.09  |
 | 256MB         | 18653.27 | 1333100.02 | 18653.27 +- 9.81    | 1333100.02 +- 38966.68  |
 | 512MB         | 18685.80 | 459160.77 | 18685.80 +- 8.46 | 459160.77 +- 46548.56 |
+---
+
+## Graph and Analysis
+In progress.
