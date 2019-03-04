@@ -82,4 +82,20 @@ In this part, each test was run 20 times to collect two lists of writing speeds 
 ---
 
 ## Graph and Analysis
-In progress.
+According to the test result table above, we plot the writing and reading speed of 3 clond platform as follow:
+#### Writing Speed
+![alt text](https://github.com/czjan23/678projectmidterm/blob/master/pics/Writing%20Speed.PNG?raw=true "Writing Speed")
+
+As shown in the above picture, AWS EC2 has the fast writing speed from 1KB to 128MB. The writing speeds of Microsoft Azure and Google Cloud platform are close when the file size is not large. However, when the file size is larger than 1MB, the writing speed of Microsoft Azure has a big increase.
+
+#### Reading Speed
+![alt text](https://github.com/czjan23/678projectmidterm/blob/master/pics/Reading%20Speed.PNG?raw=true "Reading Speed")
+
+As for the reading speed, AWS EC2 still performs the best when the file size is not larger than 128MB. Also, Microsoft Azure is better than Google Cloud Platform. 
+
+<i>There are two interesting observations from the above test result: 
+
+First, an interesting fact is that on AWS EC2, both writing speed and reading speed drop quickly when the file size increases from 1MB to 128MB. We assume that this is caused by the time spent on spreading the file to different nodes.
+
+Second, in general, AWS EC2 performs the best while Google Cloud Platform performs the worst in both tests. To some extend, this explains the percentage distribution of application workloads on each IaaS platform offerings.</i>
+
