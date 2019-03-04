@@ -35,14 +35,23 @@ python storage_test.py 10 kb 20
 The above command will run the test for writing and reading a 10KB file 20 times. After the test finishes, mean, standard deviation, confident interval will be output for statistical use. 
 
 ## Implementation Method
-In progress.
+On each of these three cloud platforms, we create an instance. With each instance, we run our python script to measure writing & reading speed.
+
+The workflow of the python script is given as below:
+1.	The tester specifies the size of data to write/read.
+2.	Generate random data of corresponding size to emulate the file “uploaded” by users.
+3.	Create a temporary file and write the generated data to it. (Here, function os.fsync() is used to ensure data is written to disk, not just memory.)
+4.	Read the temporary file after the write operation completes.
+5.	Along with write & read operations, time is recorded from which corresponding speeds are calculated.
+6.	Delete temporary file and output results.
+
 
 ## Test Result
 
 In this part, each test was run 20 times to collect two lists of writing speeds and reading speeds. From the lists, mean and standard variant were calculated. The test result of 3 cloud platforms are listed below. The file size we used were 1KB, 128KB, 256KB, 512KB, 1MB, 128MB, 256MB, 512MB. The reason for testing with different file sizes is to see how the performances change when the input file size increases.
 
 ### Microsoft Azure
-| File size     | Mean of Writing Speed(byts/ms) | Mean of Reading Speed(byts/ms) | Confident Interval of Writing Speed(byts/ms) | Confident Interval of Reading Speed(byts/ms) |
+| File size     | Mean of Writing Speed(bytes/ms) | Mean of Reading Speed(bytes/ms) | Confident Interval of Writing Speed(bytes/ms) | Confident Interval of Reading Speed(bytes/ms) |
 | ------------- |:---------------------:| ---------------------:| -------------------------:| -----------------------------------:|
 | 1KB           | 89.25 |  148676.55 | 89.25 +- 11.50 | 148676.55 +- 9952.61 | 
 | 128KB         | 8242.77 | 4447949.25 | 8242.77 +- 841.76 | 4447949.25 +- 596143.12 |
@@ -55,7 +64,7 @@ In this part, each test was run 20 times to collect two lists of writing speeds 
 
 ---
 ### AWS EC2
-| File size     | Mean of Writing Speed(byts/ms) | Mean of Reading Speed(byts/ms) | Confident Interval of Writing Speed(byts/ms) | Confident Interval of Reading Speed(byts/ms) |
+| File size     | Mean of Writing Speed(bytes/ms) | Mean of Reading Speed(bytes/ms) | Confident Interval of Writing Speed(bytes/ms) | Confident Interval of Reading Speed(bytes/ms) |
 | ------------- |:---------------------:| ---------------------:| -------------------------:| -----------------------------------:|
 | 1KB           | 570.34  |  258596.73 | 570.34 +- 11.98 | 258596.73 +- 16686.27 | 
 | 128KB         | 48525.97  | 8354828.74  | 48525.97 +- 932.68| 8354828.74 +- 489226.22 |
@@ -69,7 +78,7 @@ In this part, each test was run 20 times to collect two lists of writing speeds 
 ---
 ### Google Cloud Platform
 
-| File size     | Mean of Writing Speed(byts/ms) | Mean of Reading Speed(byts/ms) | Confident Interval of Writing Speed(byts/ms) | Confident Interval of Reading Speed(byts/ms) |
+| File size     | Mean of Writing Speed(bytes/ms) | Mean of Reading Speed(bytes/ms) | Confident Interval of Writing Speed(bytes/ms) | Confident Interval of Reading Speed(bytes/ms) |
 | ------------- |:---------------------:| ---------------------:| -------------------------:| -----------------------------------:|
 | 1KB           | 225.46   |  75407.66  |  225.46 +- 19.35    |   75407.66 +- 5420.52   | 
 | 128KB         | 19343.65 | 1824200.55 | 19343.65 +- 1624.12 | 1824200.55 +- 119796.68 |
@@ -82,7 +91,7 @@ In this part, each test was run 20 times to collect two lists of writing speeds 
 ---
 
 ## Graph and Analysis
-According to the test result table above, we plot the writing and reading speed of 3 clond platform as follow:
+According to the test result table above, we plot the writing and reading speeds of 3 cloud platforms as follow:
 #### Writing Speed
 ![alt text](https://github.com/czjan23/678projectmidterm/blob/master/pics/Writing%20Speed.PNG?raw=true "Writing Speed")
 
@@ -97,5 +106,5 @@ As for the reading speed, AWS EC2 still performs the best when the file size is 
 
 First, an interesting fact is that on AWS EC2, both writing speed and reading speed drop quickly when the file size increases from 1MB to 128MB. We assume that this is caused by the time spent on spreading the file to different nodes.
 
-Second, in general, AWS EC2 performs the best while Google Cloud Platform performs the worst in both tests. To some extend, this explains the percentage distribution of application workloads on each IaaS platform offerings.</i>
+Second, in general, AWS EC2 performs the best while Google Cloud Platform performs the worst in both tests. To some extent, this explains the percentage distribution of application workloads on each IaaS platform offerings.</i>
 
