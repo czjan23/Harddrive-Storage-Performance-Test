@@ -9,7 +9,7 @@ We accept 3 ways of running the test code:
 <b>First</b>, you can simply run the default test by using the following command:
 
 ```
-python storage_test.py`
+python storage_test.py
 ```
 
 The program will run default test to write and read different file sizes. Each test result of writing speed and reading speed will be printed and the average speed will be shown as well in the final part.
